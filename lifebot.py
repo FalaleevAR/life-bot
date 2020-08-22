@@ -7,7 +7,7 @@ from aiogram.utils import executor
 from aiogram.types.input_file import InputFile
 
 from bot.config import create_config, update_config, create_directory_if_not_exists
-from bot.keyboards import keyboard_reply, configure_style_keyboard
+from bot.keyboards import configure_style_keyboard
 from bot.keyboards import configure_count_keyboard, configure_intensity_keyboard
 from bot import phrases
 
@@ -25,7 +25,7 @@ async def send_welcome(message: types.Message) -> None:
     try:
         chat_id = message.from_user.id
         create_config(chat_id)
-        await message.answer(phrases.START_MSG, reply=False, reply_markup=keyboard_reply,
+        await message.answer(phrases.START_MSG, reply=False,
                              disable_notification=True)
         logger.info(f'{message.from_user.id}: replied with START_MSG')
     except Exception as e:
@@ -37,12 +37,14 @@ async def send_welcome(message: types.Message) -> None:
 async def send_configure(message: types.Message) -> None:
     logger.info(f'{message.from_user.id} said: {message.text}')
     try:
+        await message.answer(phrases.CONFIGURE_BEFORE, reply=False, reply_markup=configure_count_keyboard,
+                             disable_notification=True, parse_mode='MARKDOWN')
         await message.answer(phrases.CONFIGURE_COUNT, reply=False, reply_markup=configure_count_keyboard,
-                             disable_notification=True)
+                             disable_notification=True, parse_mode='MARKDOWN')
         await message.answer(phrases.CONFIGURE_INTENSITY, reply=False, reply_markup=configure_intensity_keyboard,
-                             disable_notification=True)
+                             disable_notification=True, parse_mode='MARKDOWN')
         await message.answer(phrases.CONFIGURE_STYLE, reply=False, reply_markup=configure_style_keyboard,
-                             disable_notification=True)
+                             disable_notification=True, parse_mode='MARKDOWN')
         await message.answer(phrases.CONFIGURE_AFTER, reply=False, disable_notification=True)
         logger.info(f'{message.from_user.id}: replied with INFO_MSG')
     except Exception as e:
@@ -63,7 +65,7 @@ async def process_callback(callback_query):
 async def send_help(message: types.Message) -> None:
     logger.info(f'{message.from_user.id} said: {message.text}')
     try:
-        await message.answer(phrases.INFO_MSG, reply=False, reply_markup=keyboard_reply, parse_mode='MARKDOWN',
+        await message.answer(phrases.INFO_MSG, reply=False, parse_mode='MARKDOWN',
                              disable_notification=True)
         logger.info(f'{message.from_user.id}: replied with INFO_MSG')
     except Exception as e:
@@ -74,7 +76,7 @@ async def send_help(message: types.Message) -> None:
 @dp.message_handler(commands=['life'])
 async def send_vid(message: types.Message) -> None:
     logger.info(f'{message.from_user.id} said: {message.text}')
-    await message.answer(phrases.LIFE_TEXT_RESPONSE, reply=False, reply_markup=keyboard_reply,
+    await message.answer(phrases.LIFE_TEXT_RESPONSE, reply=False,
                          disable_notification=True)
     logger.info(f'{message.from_user.id}: replied with life_text_response')
     chat_id = message.from_user.id
@@ -83,7 +85,7 @@ async def send_vid(message: types.Message) -> None:
     try:
         config = update_config(chat_id)
         save_animation(path, **config)
-        await message.answer_video(InputFile(path), reply=False, reply_markup=keyboard_reply)
+        await message.answer_video(InputFile(path), reply=False)
         logger.info(f'{message.from_user.id}: replied with animation')
     except Exception as e:
         logger.error(f'{message.from_user.id} said: {message.text} and caused {traceback.format_exc()}')

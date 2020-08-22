@@ -2,11 +2,11 @@ import os
 import pickle
 from pathlib import Path
 
-from bot.settings import DEFAULT_CONFIG
+from bot.settings import DEFAULT_CONFIG, STORAGE_DIR_NAME
 
 
 def create_config(chat_id):
-    directory = os.path.join(os.getcwd(), 'storage', str(chat_id))
+    directory = os.path.join(os.getcwd(), STORAGE_DIR_NAME, str(chat_id))
     Path(directory).mkdir(parents=True, exist_ok=True)
     path_config = os.path.join(directory, 'config.pickle')
     with open(path_config, 'wb') as handle:
@@ -14,7 +14,7 @@ def create_config(chat_id):
 
 
 def update_config(chat_id, callback_data=None):
-    directory = os.path.join(os.getcwd(), 'storage', str(chat_id))
+    directory = os.path.join(os.getcwd(), STORAGE_DIR_NAME, str(chat_id))
     Path(directory).mkdir(parents=True, exist_ok=True)
     path_config = os.path.join(directory, 'config.pickle')
     with open(path_config, 'rb') as handle:
@@ -27,6 +27,6 @@ def update_config(chat_id, callback_data=None):
 
 
 def create_directory_if_not_exists(chat_id):
-    directory = os.path.join(os.getcwd(), 'storage', str(chat_id))
+    directory = os.path.join(os.getcwd(), STORAGE_DIR_NAME, str(chat_id))
     Path(directory).mkdir(parents=True, exist_ok=True)
     return directory

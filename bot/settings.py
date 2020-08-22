@@ -3,6 +3,8 @@ import os
 
 ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID")
 
+STORAGE_DIR_NAME = 'storage'
+
 CONFIGURE = {
     'count': [800, 1000, 1300, None],
     'intensity': [0.8, 1., 1.2],
