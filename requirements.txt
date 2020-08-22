@@ -7,3 +7,4 @@ lxml==4.4.2
 sk-video==1.1.10
 numpy==1.19.1
 matplotlib==3.3.1
+python-telegram-handler==2.2

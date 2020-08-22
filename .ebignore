@@ -1,0 +1,5 @@
+*
+!.ebextensions/*
+!Dockerrun.aws.json
+!.platform/hooks/postdeploy/*
+

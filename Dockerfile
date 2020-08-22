@@ -1,9 +1,9 @@
 # base image
-FROM python:3.8-slim
+FROM python:3.8-buster
 
 # install netcat
 RUN apt-get update && apt-get clean
-RUN apt-get install ffmpeg
+RUN apt-get install -y ffmpeg
 
 # set working directory
 WORKDIR /usr/src/app
