@@ -33,12 +33,23 @@ async def send_welcome(message: types.Message) -> None:
         raise RuntimeError from e
 
 
+@dp.message_handler(commands=['help'])
+async def send_welcome(message: types.Message) -> None:
+    logger.info(f'{message.from_user.id} said: {message.text}')
+    try:
+        await message.answer(phrases.HELP_MSG, reply=False,
+                             disable_notification=True)
+        logger.info(f'{message.from_user.id}: replied with START_MSG')
+    except Exception as e:
+        logger.error(f'{message.from_user.id} said: {message.text} and caused {traceback.format_exc()}')
+        raise RuntimeError from e
+
+
 @dp.message_handler(commands=['configure'])
 async def send_configure(message: types.Message) -> None:
     logger.info(f'{message.from_user.id} said: {message.text}')
     try:
-        await message.answer(phrases.CONFIGURE_BEFORE, reply=False, reply_markup=configure_count_keyboard,
-                             disable_notification=True, parse_mode='MARKDOWN')
+        await message.answer(phrases.CONFIGURE_BEFORE, reply=False, disable_notification=True, parse_mode='MARKDOWN')
         await message.answer(phrases.CONFIGURE_COUNT, reply=False, reply_markup=configure_count_keyboard,
                              disable_notification=True, parse_mode='MARKDOWN')
         await message.answer(phrases.CONFIGURE_INTENSITY, reply=False, reply_markup=configure_intensity_keyboard,
