@@ -21,5 +21,5 @@ deploy-ecr: build
 	docker push 317869137751.dkr.ecr.eu-central-1.amazonaws.com/life_bot:latest
 
 deploy: deploy-ecr
-	echo "deploy"
+	eb deploy
 
