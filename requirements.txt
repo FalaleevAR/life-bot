@@ -1,0 +1,9 @@
+aiocache==0.11.1
+aiogram==2.4
+aiohttp==3.6.2
+beautifulsoup4==4.8.1
+dataclasses-json==0.3.6
+lxml==4.4.2
+sk-video==1.1.10
+numpy==1.19.1
+matplotlib==3.3.1
