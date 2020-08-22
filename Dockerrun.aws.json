@@ -3,5 +3,10 @@
   "Image": {
     "Name": "317869137751.dkr.ecr.eu-central-1.amazonaws.com/life_bot:latest",
     "Update": "true"
-  }
+  },
+  "Ports": [
+  	{
+		"ContainerPort": 5000
+	}
+  ]
 }
