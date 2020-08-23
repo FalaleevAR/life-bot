@@ -49,13 +49,13 @@ async def send_welcome(message: types.Message) -> None:
 async def send_configure(message: types.Message) -> None:
     logger.info(f'{message.from_user.id} said: {message.text}')
     try:
-        await message.answer(phrases.CONFIGURE_BEFORE, reply=False, disable_notification=True, parse_mode='MARKDOWN')
+        await message.answer(phrases.CONFIGURE_BEFORE, reply=False, disable_notification=True, parse_mode='HTML')
         await message.answer(phrases.CONFIGURE_COUNT, reply=False, reply_markup=configure_count_keyboard,
-                             disable_notification=True, parse_mode='MARKDOWN')
+                             disable_notification=True, parse_mode='HTML')
         await message.answer(phrases.CONFIGURE_INTENSITY, reply=False, reply_markup=configure_intensity_keyboard,
-                             disable_notification=True, parse_mode='MARKDOWN')
+                             disable_notification=True, parse_mode='HTML')
         await message.answer(phrases.CONFIGURE_STYLE, reply=False, reply_markup=configure_style_keyboard,
-                             disable_notification=True, parse_mode='MARKDOWN')
+                             disable_notification=True, parse_mode='HTML')
         await message.answer(phrases.CONFIGURE_AFTER, reply=False, disable_notification=True)
         logger.info(f'{message.from_user.id}: replied with INFO_MSG')
     except Exception as e:

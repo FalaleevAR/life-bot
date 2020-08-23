@@ -15,9 +15,9 @@ CONFIGURE_BEFORE = """We randomly initialize the field with dense squares with a
 You are welcome to configure the number of squares and its' weights to be initialized.
 You can find initialization result in the first frame of video.
 """
-CONFIGURE_COUNT = "**Number of dense squares**"
-CONFIGURE_INTENSITY = "**Square weight**\n" \
+CONFIGURE_COUNT = "<b>Number of dense squares</b>"
+CONFIGURE_INTENSITY = "<b>Square weight</b>\n" \
                       "Every cell has its weight. The greater weight causes a higher influence on neighbor cells."
-CONFIGURE_STYLE = "**Plotting style**\n" \
+CONFIGURE_STYLE = "<b>Plotting style</b>\n" \
                   "Pick a style to be used while plotting your environment."
 CONFIGURE_AFTER = "READY? Go /life"
