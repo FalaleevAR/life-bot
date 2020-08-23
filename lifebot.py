@@ -34,7 +34,7 @@ async def send_welcome(message: types.Message) -> None:
 
 
 @dp.message_handler(commands=['help'])
-async def send_welcome(message: types.Message) -> None:
+async def send_help(message: types.Message) -> None:
     logger.info(f'{message.from_user.id} said: {message.text}')
     try:
         await message.answer(phrases.HELP_MSG, reply=False,
@@ -73,7 +73,7 @@ async def process_callback(callback_query):
 
 
 @dp.message_handler(commands=['info'])
-async def send_help(message: types.Message) -> None:
+async def send_info(message: types.Message) -> None:
     logger.info(f'{message.from_user.id} said: {message.text}')
     try:
         await message.answer(phrases.INFO_MSG, reply=False, parse_mode='MARKDOWN',
