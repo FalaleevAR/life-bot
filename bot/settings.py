@@ -6,7 +6,7 @@ ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID")
 STORAGE_DIR_NAME = 'storage'
 
 CONFIGURE = {
-    'count': [800, 1000, 1300, None],
+    'count': [900, 1100, 1300],
     'intensity': [0.8, 1., 1.2],
     'style': ['viridis', 'plasma', 'gray', 'binary', 'seismic', 'gnuplot']
 }
