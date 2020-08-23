@@ -1,6 +1,6 @@
+import os
 import logging
 from logging.handlers import TimedRotatingFileHandler
-import os
 
 from telegram_handler import TelegramHandler
 
