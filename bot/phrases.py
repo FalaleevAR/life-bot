@@ -5,7 +5,7 @@ Go /help for more commands.
 HELP_MSG = '''
 /configure – To configure initialization parameters of the environment.
 /info – Link to original paper, explanation of rules of environment and author.
-/life – Runs rendering a video of first N seconds of environment. 
+/life – Runs rendering a video of first N seconds of environment.
 '''
 INFO_MSG = r'''Inspired by [this article](https://arxiv.org/abs/1111.1567) and implemented by @sashundikus.'''
 EXCEPTION_MSG = "Exception massage. :("
